@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">lab1</string>
+    <string name="button">Button</string>
+    <string name="textview">TextView</string>
+    <string name="string">string</string>
+    <string name="str">str</string>
+    <string name="view1">view1</string>
+    <string name="view2">view2</string>
+    <string name="view3">view3</string>
+    <string name="view4">view4</string>
+    <string name="view5">view5</string>
+    <string name="view">view</string>
+    <string name="_6">6</string>
 </resources>
