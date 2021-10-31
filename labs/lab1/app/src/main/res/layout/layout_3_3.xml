@@ -87,9 +87,9 @@
             android:background="@color/design_default_color_primary_dark"
             android:contentDescription="@string/view5"
 
+            app:layout_constraintBottom_toTopOf="@id/view6"
             app:layout_constraintDimensionRatio="0.5"
             app:layout_constraintStart_toEndOf="@id/vertical_guideline"
-            app:layout_constraintBottom_toTopOf="@id/view6"
             app:layout_constraintTop_toTopOf="parent" />
 
         <RadioGroup
