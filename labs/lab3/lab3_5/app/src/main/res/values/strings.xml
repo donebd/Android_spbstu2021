@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">lab3_5</string>
+    <string name="to_second">To second</string>
+    <string name="about">About</string>
+    <string name="to_first">TO FIRST</string>
+    <string name="to_third">TO THIRD</string>
+    <string name="activity_1">Activity 1</string>
+    <string name="activity_2">Activity 2</string>
+    <string name="activity_3">Activity 3</string>
+
+</resources>
