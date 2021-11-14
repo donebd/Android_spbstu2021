@@ -1,6 +1,5 @@
 package com.example.lab3_3
 
-import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,18 +17,18 @@ class Activity3 : AppCompatActivity() {
         binding = Activity3Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.button.setOnClickListener {
+        binding.bnToFirst.setOnClickListener {
             navToActivity1()
         }
 
-        binding.button2.setOnClickListener {
+        binding.bnToSecond.setOnClickListener {
             navToActivity2()
         }
 
     }
 
     private fun navToActivity1() {
-        startActivity(Intent(this, Activity1::class.java)
+        startActivity(Intent(this, MainActivity::class.java)
             .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
     }
 

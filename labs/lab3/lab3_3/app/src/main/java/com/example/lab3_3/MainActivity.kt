@@ -6,16 +6,16 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import com.example.lab3_3.databinding.Activity1Binding
+import com.example.lab3_3.databinding.ActivityMainBinding
 
-class Activity1 : AppCompatActivity() {
-    private lateinit var binding: Activity1Binding
+class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = Activity1Binding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.button.setOnClickListener {
+        binding.bnToSecond.setOnClickListener {
             navToActivity2()
         }
 

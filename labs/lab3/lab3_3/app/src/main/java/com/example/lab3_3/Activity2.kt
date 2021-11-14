@@ -17,11 +17,11 @@ class Activity2 : AppCompatActivity() {
         binding = Activity2Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.button.setOnClickListener {
+        binding.bnToFirst.setOnClickListener {
             navToActivity1()
         }
 
-        binding.button2.setOnClickListener {
+        binding.bnToThird.setOnClickListener {
             navToActivity3()
         }
 
