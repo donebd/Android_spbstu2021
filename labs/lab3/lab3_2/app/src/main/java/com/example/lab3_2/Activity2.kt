@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import androidx.navigation.findNavController
+import androidx.navigation.ui.navigateUp
 import com.example.lab3_2.databinding.Activity2Binding
 
 class Activity2 : AppCompatActivity() {
@@ -21,11 +23,11 @@ class Activity2 : AppCompatActivity() {
         binding = Activity2Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.button.setOnClickListener {
+        binding.bnToFirst.setOnClickListener {
             navToActivity1()
         }
 
-        binding.button2.setOnClickListener {
+        binding.bnToThird.setOnClickListener {
             navToActivity3()
         }
 

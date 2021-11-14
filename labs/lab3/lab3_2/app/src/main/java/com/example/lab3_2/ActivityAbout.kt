@@ -13,4 +13,9 @@ class ActivityAbout : AppCompatActivity() {
         binding = ActivityAboutBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
+    }
 }

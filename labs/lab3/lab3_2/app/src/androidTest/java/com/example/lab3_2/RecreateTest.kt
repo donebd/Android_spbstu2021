@@ -1,6 +1,6 @@
-package com.example.myapplication
+package com.example.lab3_2
 
-import androidx.core.app.ActivityCompat.recreate
+
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.launchActivity
 import androidx.test.ext.junit.runners.AndroidJUnit4
