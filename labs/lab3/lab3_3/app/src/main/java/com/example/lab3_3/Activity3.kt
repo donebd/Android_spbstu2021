@@ -8,7 +8,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import com.example.lab3_3.databinding.Activity3Binding
 
-class Activity3 : AppCompatActivity() {
+class Activity3 : MyActivity() {
 
     private lateinit var binding: Activity3Binding
 
@@ -29,24 +29,11 @@ class Activity3 : AppCompatActivity() {
 
     private fun navToActivity1() {
         startActivity(Intent(this, MainActivity::class.java)
-            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP))
     }
 
     private fun navToActivity2() {
         finish()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater: MenuInflater = menuInflater
-        inflater.inflate(R.menu.option_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return if (item.itemId == R.id.about_item) {
-            startActivity(Intent(this, ActivityAbout::class.java))
-            true
-        } else
-            super.onOptionsItemSelected(item)
-    }
 }
