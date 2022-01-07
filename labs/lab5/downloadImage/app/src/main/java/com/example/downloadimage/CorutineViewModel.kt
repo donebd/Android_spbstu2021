@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.net.URL
@@ -29,7 +30,12 @@ class CorutineViewModel : ViewModel() {
             Log.i(TAG, "Get request...")
             delay(1000)
             Log.i(TAG, "Downloading in ${Thread.currentThread()}")
-            bitmap.postValue(BitmapFactory.decodeStream(MOOD_URL.openConnection().getInputStream()))
+            val pic = BitmapFactory.decodeStream(
+                MOOD_URL.openConnection().getInputStream()
+            )
+            MainScope().launch {
+                bitmap.value = pic
+            }
         }
     }
 

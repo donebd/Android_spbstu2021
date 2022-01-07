@@ -5,8 +5,7 @@ import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.isActive
+import kotlinx.coroutines.*
 
 class CoroutineRealization : AppCompatActivity() {
 
@@ -22,7 +21,7 @@ class CoroutineRealization : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         textSecondsElapsed = findViewById(R.id.textSecondsElapsed)
-        lifecycleScope.launchWhenResumed {
+        val a = lifecycleScope.launchWhenResumed {
             Log.i(MY_LOG, "$this is started")
             while (isActive) {
                 Log.i(MY_LOG, "Coroutine works")
@@ -43,7 +42,7 @@ class CoroutineRealization : AppCompatActivity() {
         startTime = currentTime
         Log.i(MY_LOG, "$secondsElapsed")
 
-        textSecondsElapsed.post {
+        MainScope().launch {
             textSecondsElapsed.text = resources.getQuantityString(
                 R.plurals.secCounter,
                 secondsElapsed.toInt(),

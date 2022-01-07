@@ -21,7 +21,6 @@
         </activity>
         <activity
             android:name="com.example.lab3_5.ActivityAbout"
-            android:exported="true"
             android:parentActivityName=".MainActivity" />
     </application>
 

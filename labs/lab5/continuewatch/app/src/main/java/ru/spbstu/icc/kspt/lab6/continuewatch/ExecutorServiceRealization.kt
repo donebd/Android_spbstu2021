@@ -1,11 +1,13 @@
 package ru.spbstu.icc.kspt.lab6.continuewatch
 
+import android.app.Application
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+import java.util.concurrent.Future
 
 class ExecutorServiceRealization : AppCompatActivity() {
 
@@ -14,7 +16,8 @@ class ExecutorServiceRealization : AppCompatActivity() {
 
     private var secondsElapsed: Double = 0.0
     private lateinit var textSecondsElapsed: TextView
-    private lateinit var executorService: ExecutorService
+    private lateinit var timeExecutor: Future<*>
+    private val executorService by lazy { (application as ExecutorServiceApplication).executor }
     private var startTime: Long = 0
     private var currentTime: Long = 0
 
@@ -26,24 +29,28 @@ class ExecutorServiceRealization : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        executorService = Executors.newSingleThreadExecutor()
-        executorService.execute(getThread())
-        Log.i(MY_LOG, "$executorService is started")
+        executorService.shutdownNow()
+        timeExecutor = executorService.submit(getThread())
         startTime = System.currentTimeMillis()
     }
 
     override fun onStop() {
-        executorService.shutdown()
+        updateTime()
+        timeExecutor.cancel(true)
         super.onStop()
     }
 
     private fun getThread(): Thread = Thread {
-        while (!executorService.isShutdown) {
-            Thread.sleep(1000)
+        while (!Thread.currentThread().isInterrupted) {
+            try {
+                Thread.sleep(1000)
+            } catch (e: InterruptedException) {
+                Log.i(MY_LOG, "${Thread.currentThread()} is stopped")
+                return@Thread
+            }
             Log.i(MY_LOG, "${Thread.currentThread()} iterating")
             updateTime()
         }
-        Log.i(MY_LOG, "${Thread.currentThread()} is stopped")
     }
 
     private fun updateTime() {
@@ -74,4 +81,8 @@ class ExecutorServiceRealization : AppCompatActivity() {
             secondsElapsed = getDouble(SAVE_KEY)
         }
     }
+}
+
+class ExecutorServiceApplication : Application() {
+    var executor: ExecutorService = Executors.newSingleThreadExecutor()
 }

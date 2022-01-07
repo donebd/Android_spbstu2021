@@ -6,11 +6,8 @@ import com.example.lab3_5.databinding.ActivityAboutBinding
 
 class ActivityAbout : AppCompatActivity() {
 
-    private lateinit var binding : ActivityAboutBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAboutBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_about)
     }
 }

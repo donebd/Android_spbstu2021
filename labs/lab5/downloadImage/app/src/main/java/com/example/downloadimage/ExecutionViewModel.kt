@@ -7,9 +7,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import java.net.URL
 import java.util.concurrent.ExecutorService
-import java.util.concurrent.Executors
 
-class ExecutionViewModel : ViewModel() {
+class ExecutionViewModel(private val executorService: ExecutorService) : ViewModel() {
 
     private val TAG = "Download"
     private val MOOD_URL = URL(
@@ -17,8 +16,6 @@ class ExecutionViewModel : ViewModel() {
     )
 
     val bitmap: MutableLiveData<Bitmap> = MutableLiveData()
-
-    private val executorService: ExecutorService = Executors.newSingleThreadExecutor()
 
     fun downloadImage() {
         executorService.execute {
@@ -38,7 +35,6 @@ class ExecutionViewModel : ViewModel() {
 
     override fun onCleared() {
         Log.i(TAG, "Clear ViewModel")
-        executorService.shutdown()
         super.onCleared()
     }
 }

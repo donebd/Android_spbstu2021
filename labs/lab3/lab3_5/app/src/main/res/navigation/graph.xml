@@ -46,7 +46,4 @@
         android:name="com.example.lab3_5.ActivityAbout"
         android:label="activity_about"
         tools:layout="@layout/activity_about" />
-    <action
-        android:id="@+id/action_to_activityAbout"
-        app:destination="@id/activityAbout" />
 </navigation>
